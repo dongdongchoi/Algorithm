@@ -3,27 +3,38 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
-    public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st = new StringTokenizer(br.readLine());
 
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st = new StringTokenizer(br.readLine());
         int num = Integer.parseInt(st.nextToken());
-
+        int[] arr = new int[num];
+        
+        for(int i = 0; i<num;i++) {
+        	arr[i] = i+1;
+        }
+        
+        int sum= 0;
         int cnt = 0;
-        for (int i = 1; i <= num; i++) {
-            int sum = 0;
-            for (int j = i; j <= num; j++) {
-                sum += j;
-                if (sum > num) {
-                    break;
-                } else if (sum == num) {
-                    cnt++;
-                }
+        for(int i= 0;i<num;i++) {
+        	sum = arr[i];
+        	for(int j = i+1;  j< num; j++) {
+        		sum += arr[j];
+            	if(sum<num) {
+            		continue;
+            	}
+            	else if(sum == num) {
+            		cnt++;
+            		break;
+            		
+            	}
+            	else {
+            		break;
+            	}
             }
         }
-        System.out.println(cnt);
-    }
+       
+        System.out.println(cnt+1);
+	}
 }
