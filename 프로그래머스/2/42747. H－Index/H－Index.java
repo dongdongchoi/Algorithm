@@ -1,21 +1,23 @@
 import java.util.*;
 class Solution {
     public int solution(int[] citations) {
-        Arrays.sort(citations);
         int answer = 0;
-        int temp = 0;
-        int inyong =0;
-        
-        for(int i=0; i<citations.length;i++){
+        Arrays.sort(citations);
+        int temp =0;
+        for(int i=0;i<citations.length;i++){
+            int cnt =0;
             temp = citations[i];
-            inyong = citations.length - i;
-            
-            if(temp>=inyong){
-                answer = citations.length - i;
-                break;
+            for(int j=i; j<citations.length;j++){
+                cnt++;
+                
             }
-        }
-        
+            
+            if(temp>=cnt){
+            
+                    answer = cnt;
+                break;
+                }
+        }  
         return answer;
     }
 }
