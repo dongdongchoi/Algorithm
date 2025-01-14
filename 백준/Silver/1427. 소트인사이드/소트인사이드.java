@@ -8,20 +8,26 @@ import java.util.*;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int N = Integer.parseInt(br.readLine());
-        String M = Integer.toString(N);
-        StringBuilder sb = new StringBuilder();
+        	BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine());
 
-        Integer[] arr = new Integer[M.length()];
-        for (int i = 0; i < M.length(); i++) {
-            arr[i] = M.charAt(i) - '0'; // 문자를 숫자로 변환
-        }
-        Arrays.sort(arr, Collections.reverseOrder());
-
-        for(int i=0; i<M.length();i++){
-            sb.append(arr[i]);
-        }
-        System.out.println(sb.toString());
-    }
+        int a = Integer.parseInt(st.nextToken());
+        String b = a+"";
+        
+		 char[]ca = b.toCharArray();
+		 
+		 String[] aa = new String[ca.length];
+		 
+		 for(int i =0; i< ca.length;i++) {
+			 aa[i] = ca[i]+"";
+		 }
+		
+		 Arrays.sort(aa, Collections.reverseOrder());
+		 
+		 String ans = "";
+		 for(int i = 0; i<aa.length;i++) {
+			 ans+=aa[i];
+		 }
+		 System.out.println(ans);
+	}
 }
