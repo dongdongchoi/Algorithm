@@ -9,25 +9,33 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int N = Integer.parseInt(br.readLine());
-        int[] arr = new int[N];
+        int a = Integer.parseInt(br.readLine());
+        
+        // 두 번째 줄에서 숫자들을 읽기
         StringTokenizer st = new StringTokenizer(br.readLine());
-
-        for (int i = 0; i < N; i++) {
-            arr[i] = Integer.parseInt(st.nextToken());
+        int[] aa = new int[a]; 
+        
+        for (int i = 0; i < a; i++) {
+            aa[i] = Integer.parseInt(st.nextToken());
         }
-
-        Arrays.sort(arr);
-
-        int idx = arr.length;
+        
+        Arrays.sort(aa);
+        int[]b = new int[aa.length];
+        
         int ans = 0;
-        while(idx!=0){
-            for(int i = 0; i<idx;i++){
-                ans +=arr[i];
-            }
-            idx--;
+        for(int i=0;i<aa.length;i++) {
+        	int temp = 0;
+        	
+        		for(int j=0;j<=i;j++) {
+        			temp +=aa[j];
+        		}
+        		b[i]=temp;
+        		ans+=b[i];
+        	
         }
-        System.out.println(ans);
+        
+        
+      System.out.println(ans);
 
     }
 }
