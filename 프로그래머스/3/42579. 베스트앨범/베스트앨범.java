@@ -30,20 +30,19 @@ class Solution {
         System.out.println(totgen);
         System.out.println(eacpl);
         
-        List<String> gen = new ArrayList<>(totgen.keySet());
-        Collections.sort(gen,(s1,s2) -> totgen.get(s2) - totgen.get(s1));    
+        List<String>li = new ArrayList<>(totgen.keySet());
+        Collections.sort(li,(s1,s2) -> totgen.get(s2) - totgen.get(s1));
         
-        for(String str : gen){
-            HashMap<Integer, Integer> ha2 = eacpl.get(str);
-            List<Integer> li = new ArrayList<>(ha2.keySet());
-            Collections.sort(li,(s1,s2) -> ha2.get(s2) - ha2.get(s1));
+        for(String str : li){
+            HashMap<Integer, Integer> ha = new HashMap<>(eacpl.get(str));
+            List<Integer> li2 = new ArrayList<>(ha.keySet());
+            Collections.sort(li2,(s1,s2) -> ha.get(s2) - ha.get(s1));
             
-            answer.add(li.get(0));
-            if(li.size() > 1)
-                answer.add(li.get(1));
-            
+            answer.add(li2.get(0));
+            if(li2.size()>1){
+                answer.add(li2.get(1));
+            }
         }
-        
         
         return answer.stream().mapToInt(i->i).toArray();
     }
