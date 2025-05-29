@@ -1,38 +1,42 @@
 import java.util.*;
 class Solution {
     public int[] solution(int[] answers) {
-        int[]a = {1,2,3,4,5};
-        int[]b = {2,1,2,3,2,4,2,5};
-        int[]c = {3,3,1,1,2,2,4,4,5,5};
+        List<Integer>answer = new ArrayList<>();
+        int [] a = {1,2,3,4,5};
+        int [] b = {2,1,2,3,2,4,2,5};
+        int [] c = {3,3,1,1,2,2,4,4,5,5};
         
-        int[]check ={0,0,0};
-        ArrayList<Integer> list = new ArrayList<>();
+        int sca = 0;
+        int scb = 0;
+        int scc = 0;
+        
         for(int i =0; i<answers.length;i++){
-            if(answers[i]==a[i%a.length]){
-                check[0]++;
+            if(answers[i] == a[i%a.length]){
+                sca++;
             }
-            if(answers[i]==b[i%b.length]){//독립적으로 판단하기 위해 else if가 아닌 if로 표기
-                check[1]++;
+            if(answers[i] == b[i%b.length]){
+                scb++;
             }
-            if(answers[i]==c[i%c.length]){
-                System.out.println(i+"번째");
-                check[2]++;
+            if(answers[i] == c[i%c.length]){
+                scc++;
             }
         }
-        
+        int[]ab = new int[3];
+        ab[0] = sca;
+        ab[1] = scb;
+        ab[2] = scc;
         int max = 0;
-        for(int i =0; i<check.length;i++){
-            if(check[i]>max){
-                max=check[i];
+        for(int i = 0; i< ab.length;i++){
+            if(ab[i] > max){
+                max = ab[i];
             }
         }
-        for(int i =0;i<check.length;i++){
-            if(check[i]==max){
-                list.add(i+1);
+        for(int i=0; i< ab.length;i++){
+            if(max == ab[i]){
+                answer.add(i+1);
             }
         }
         
-        int[] answer = list.stream().mapToInt(i->i).toArray();
-        return answer;
+        return answer.stream().mapToInt(i->i).toArray();
     }
 }
